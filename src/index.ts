@@ -9,6 +9,5 @@ const company = new Company();
 
 maps.initMap();
 
- 
-
- 
+maps.addMarker(25.344,25.344);
+maps.addMarker(2.344,25.344);

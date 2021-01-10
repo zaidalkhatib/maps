@@ -100497,6 +100497,17 @@ function () {
     });
   };
 
+  Maps.prototype.addMarker = function (lat, lng) {
+    var uluru = {
+      lat: lat,
+      lng: lng
+    };
+    var marker = new google.maps.Marker({
+      position: uluru,
+      map: map
+    });
+  };
+
   return Maps;
 }();
 
@@ -100518,6 +100529,8 @@ var maps = new Maps_1.Maps();
 var user = new User_1.User();
 var company = new Company_1.Company();
 maps.initMap();
+maps.addMarker(25.344, 25.344);
+maps.addMarker(2.344, 25.344);
 },{"./User":"src/User.ts","./Company":"src/Company.ts","./Maps":"src/Maps.ts"}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
