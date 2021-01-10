@@ -7,6 +7,10 @@ export class User
     lat:number;
     lng:number; 
   }
+  contnet():string
+  {
+    return `<h1>This is ${this.name}<h1>`
+  }
   constructor()
   {
     this.name=faker.name.findName();

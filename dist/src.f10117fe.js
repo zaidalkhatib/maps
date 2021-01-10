@@ -100437,6 +100437,10 @@ function () {
     };
   }
 
+  User.prototype.contnet = function () {
+    return "<h1>This is " + this.name + "<h1>";
+  };
+
   return User;
 }();
 
@@ -100469,6 +100473,10 @@ function () {
     };
   }
 
+  Company.prototype.contnet = function () {
+    return "<h1>This is " + this.name + "</h1>";
+  };
+
   return Company;
 }();
 
@@ -100499,6 +100507,11 @@ function () {
   };
 
   Maps.prototype.addMarker = function (item) {
+    var _this = this;
+
+    var infowindow = new google.maps.InfoWindow({
+      content: item.contnet()
+    });
     var uluru = {
       lat: item.location.lat,
       lng: item.location.lng
@@ -100507,6 +100520,9 @@ function () {
       position: uluru,
       map: this.map,
       title: item.name
+    });
+    marker.addListener("click", function () {
+      infowindow.open(_this.map, marker);
     });
   };
 

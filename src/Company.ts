@@ -8,6 +8,10 @@ export class Company
     lat:number; 
     lng:number
   }
+  contnet():string
+  {
+    return `<h1>This is ${this.name}</h1>`
+  }
 
   constructor() 
   {
