@@ -100461,7 +100461,7 @@ var Company =
 /** @class */
 function () {
   function Company() {
-    this.companyName = faker_1.default.company.companyName();
+    this.name = faker_1.default.company.companyName();
     this.catchPhrase = faker_1.default.company.catchPhrase();
     this.location = {
       lat: Number(faker_1.default.address.latitude()),
@@ -100480,31 +100480,33 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.Maps = void 0;
-var map;
 
 var Maps =
 /** @class */
 function () {
-  function Maps() {}
+  function Maps(id) {
+    this.id = id;
+  }
 
   Maps.prototype.initMap = function () {
-    map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 8,
+    this.map = new google.maps.Map(document.getElementById(this.id), {
+      zoom: 5,
       center: {
-        lat: 0,
-        lng: 0
+        lat: 25.344,
+        lng: 25.344
       }
     });
   };
 
-  Maps.prototype.addMarker = function (lat, lng) {
+  Maps.prototype.addMarker = function (item) {
     var uluru = {
-      lat: lat,
-      lng: lng
+      lat: item.location.lat,
+      lng: item.location.lng
     };
     var marker = new google.maps.Marker({
       position: uluru,
-      map: map
+      map: this.map,
+      title: item.name
     });
   };
 
@@ -100525,12 +100527,12 @@ var Company_1 = require("./Company");
 
 var Maps_1 = require("./Maps");
 
-var maps = new Maps_1.Maps();
+var maps = new Maps_1.Maps('map');
 var user = new User_1.User();
 var company = new Company_1.Company();
 maps.initMap();
-maps.addMarker(25.344, 25.344);
-maps.addMarker(2.344, 25.344);
+maps.addMarker(user);
+maps.addMarker(company);
 },{"./User":"src/User.ts","./Company":"src/Company.ts","./Maps":"src/Maps.ts"}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';

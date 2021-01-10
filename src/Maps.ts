@@ -1,19 +1,35 @@
-let map: google.maps.Map;
+interface Item
+{
+  location: 
+  {
+    lat:number, 
+    lng:number
+  }
+  name:string
+
+}
 export class Maps
 {
-
+  id:string;
+  constructor(id:string)
+  {
+  this.id=id;
+  }
+  private map: google.maps.Map;
   initMap(): void {
-    map = new google.maps.Map(document.getElementById("map"),  {
-      zoom: 8,
-      center: { lat: 0, lng: 0 },
+    this.map = new google.maps.Map(document.getElementById(this.id),  {
+      zoom: 5,
+      center: { lat: 25.344, lng: 25.344 },
     }); 
   }
-  addMarker(lat:number,  lng:number)
+
+  addMarker(item:Item):void
   {
-    const uluru = { lat,lng };
+    const uluru = { lat:item.location.lat,lng:item.location.lng};
     const marker = new google.maps.Marker({
       position:uluru,
-      map: map,
+      map: this.map,
+      title:item.name
     });
   }
 

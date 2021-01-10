@@ -1,7 +1,7 @@
 import faker from "faker"; 
 export class User
 {
-  name:string; 
+  public name:string; 
   location:
   {
     lat:number;
